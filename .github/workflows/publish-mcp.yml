@@ -1,0 +1,31 @@
+# .github/workflows/publish-mcp.yml — publishes server.json to the official
+# MCP registry (registry.modelcontextprotocol.io) from CI, no local terminal.
+# Auth is GitHub OIDC: the workflow's identity token proves the repo belongs
+# to agentready-market, which grants the io.github.agentready-market/* namespace.
+# Runs on every change to server.json, or manually from the Actions tab.
+name: Publish to MCP Registry
+
+on:
+  push:
+    branches: [main]
+    paths: ["server.json"]
+  workflow_dispatch: {}
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write   # OIDC token for mcp-publisher login
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install mcp-publisher
+        run: |
+          curl -L "https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_$(uname -s | tr '[:upper:]' '[:lower:]')_$(uname -m).tar.gz" | tar xz mcp-publisher
+
+      - name: Login to registry (GitHub OIDC)
+        run: ./mcp-publisher login github-oidc
+
+      - name: Publish server
+        run: ./mcp-publisher publish
