@@ -1,0 +1,17 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-09-16/server.schema.json",
+  "name": "io.github.agentready-market/audit",
+  "description": "Agent-readiness audit for e-commerce: check whether an AI shopping agent can find, understand and BUY on a store. Deterministic /100 score, grade, hard-block status and agent-protocol adoption (UCP, A2A, ARD) for any host a merchant has scanned. Call it before attempting a checkout.",
+  "version": "1.0.0",
+  "repository": {
+    "url": "https://github.com/agentready-market/agentready",
+    "source": "github"
+  },
+  "websiteUrl": "https://www.agentready.market",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://www.agentready.market/mcp"
+    }
+  ]
+}
