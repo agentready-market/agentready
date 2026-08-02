@@ -1,0 +1,50 @@
+{
+  "name": "agentready-market",
+  "version": "0.1.0",
+  "description": "Client for the AgentReady e-commerce agent-readiness audit API (agentready.market): can an AI shopping agent find, understand and BUY on a store? Score /100. Unaffiliated with other AgentReady-named products.",
+  "keywords": [
+    "agentic-commerce",
+    "ai-agents",
+    "e-commerce",
+    "audit",
+    "agent-readiness",
+    "mcp",
+    "structured-data",
+    "aoo"
+  ],
+  "homepage": "https://www.agentready.market",
+  "bugs": {
+    "email": "hello@agentready.market"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/agentready-market/agentready.git",
+    "directory": "npm"
+  },
+  "license": "MIT",
+  "author": "AgentReady (agentready.market) <hello@agentready.market> (https://www.agentready.market)",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
